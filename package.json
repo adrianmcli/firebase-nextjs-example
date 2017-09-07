@@ -1,0 +1,8 @@
+{
+  "name": "firebase-nextjs-example",
+  "version": "1.0.0",
+  "description": "An example app for using firebase with Next.js",
+  "main": "index.js",
+  "author": "Adrian Li",
+  "license": "MIT"
+}
