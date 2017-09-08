@@ -1,15 +1,7 @@
 import React from "react";
 import firebase from "../lib/firebase";
-
-const RFPItem = rfp => (
-  <div>
-    <h4>Company: {rfp.company}</h4>
-    <div>Created At: {rfp.createdAt}</div>
-    <div>Email: {rfp.email}</div>
-    <div>Location: {rfp.location}</div>
-    <div>Status: {rfp.status}</div>
-  </div>
-);
+import AddRfp from "../components/Add";
+import RFPItem from "../components/RFPItem";
 
 export default class extends React.Component {
   constructor() {
@@ -32,9 +24,18 @@ export default class extends React.Component {
 
   render() {
     const { loading, rfps } = this.state;
-    const rfpData = Object.values(rfps);  // convert object to an array
+    const rfpKeys = Object.keys(rfps);
     return (
-      <div>{loading ? "..." : rfpData.map(RFPItem)}</div>
+      <div>
+        <h1>Add an RFP</h1>
+        <AddRfp />
+        <h1>RFPs</h1>
+        <div>
+          {loading
+            ? "Loading..."
+            : rfpKeys.map(id => <RFPItem key={id} id={id} data={rfps[id]} />)}
+        </div>
+      </div>
     );
   }
 }
